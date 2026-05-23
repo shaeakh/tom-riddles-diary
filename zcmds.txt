@@ -1,0 +1,2 @@
+tree /f > ztree.txt
+git diff origin/dev...HEAD
