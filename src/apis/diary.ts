@@ -1,4 +1,6 @@
-// @/apis/diary.ts
+// src/apis/diary.ts
+import axios from 'axios';
+import EnvConstants from '@/utils/envConstants';
 
 export interface DiaryRequest {
   message: string;
@@ -9,17 +11,23 @@ export interface DiaryResponse {
 }
 
 export const askTomRiddleAPI = async (payload: DiaryRequest): Promise<DiaryResponse> => {
-  const response = await fetch('http://localhost:5000/api/ask-tom', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(payload),
-  });
+  try {
+    const response = await axios.post<DiaryResponse>(
+      `${EnvConstants.BACKEND_URL}/api/ask-tom`,
+      payload,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
 
-  if (!response.ok) {
-    throw new Error('The diary rejects your magic. Failed to connect.');
+    return response.data;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
+    const errorMessage =
+      error.response?.data?.message || 'The diary rejects your magic. Failed to connect.';
+    // eslint-disable-next-line preserve-caught-error
+    throw new Error(errorMessage);
   }
-
-  return response.json();
 };
