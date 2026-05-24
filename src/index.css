@@ -128,3 +128,13 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 }
+/* src/index.css-এর একদম নিচে এটি যুক্ত করুন */
+@import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Special+Elite&display=swap');
+
+@utility font-cursive {
+  font-family: 'Pinyon Script', cursive;
+}
+
+@utility font-mono {
+  font-family: 'Special Elite', monospace;
+}
