@@ -38,8 +38,8 @@ export const useTomRiddle = (): UseTomRiddleReturn => {
         // ২. Bleeding State শুরু (Fade-in)
         setCurrentState('fading-in');
         setUserText('');
-      } catch (err: any) {
-        setError(err.message || 'Something went wrong.');
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Something went wrong.');
         setCurrentState('idle');
       }
     }, 1200);
