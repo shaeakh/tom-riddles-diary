@@ -20,8 +20,8 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    // path alias :
-    "baseUrl": ".",
+
+    /* Path Alias Fixed (baseUrl ডিলিট করা হয়েছে) */
     "paths": {
       "@/*": ["./src/*"]
     }
